@@ -1,0 +1,46 @@
+{
+  "name": "migration-flight-recorder",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Approval-gated PostgreSQL migration inspection, rehearsal and local deployment through TrueForge.",
+  "type": "module",
+  "engines": {
+    "node": ">=22.14.0"
+  },
+  "scripts": {
+    "setup:local": "node scripts/init-local.mjs",
+    "db:up": "docker compose --env-file db/.env -f db/compose.yml up -d --wait",
+    "db:stop": "docker compose --env-file db/.env -f db/compose.yml stop",
+    "setup:inspection": "node scripts/setup-inspection.mjs",
+    "setup:target": "node scripts/provision-local-target.mjs",
+    "mcp:up": "docker compose --env-file mcp/.env -f mcp/compose.yml up -d",
+    "mcp:stop": "docker compose --env-file mcp/.env -f mcp/compose.yml stop",
+    "mcp:rehearsal": "node scripts/rehearsal-mcp.mjs",
+    "mcp:target": "node scripts/target-mcp.mjs",
+    "trueforge": "node scripts/start-trueforge.mjs",
+    "setup:agent": "node scripts/install-agent.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "check": "node scripts/check.mjs",
+    "test:roles": "node scripts/verify-roles.mjs",
+    "test:bootstrap": "node scripts/test-bootstrap.mjs",
+    "test:inspection": "node scripts/test-inspection.mjs",
+    "test:rehearsal": "node scripts/test-rehearsal.mjs",
+    "test:rehearsal:boundaries": "node scripts/test-rehearsal-boundaries.mjs",
+    "test:rehearsal:mcp": "node scripts/test-rehearsal-mcp.mjs",
+    "test:target": "node scripts/test-target-execution.mjs",
+    "test:approval": "node scripts/test-approval-policy.mjs",
+    "test:agent": "node scripts/test-short-prompt-approval.mjs",
+    "rehearse": "node scripts/rehearse.mjs",
+    "rehearsal:cleanup": "node scripts/rehearse.mjs --cleanup"
+  },
+  "dependencies": {
+    "fastmcp": "3.35.0",
+    "pg": "8.23.0",
+    "pgsql-parser": "18.2.8",
+    "zod": "3.25.76"
+  },
+  "devDependencies": {
+    "@modelcontextprotocol/sdk": "1.30.1",
+    "@truefoundry/trueforge": "0.2.1"
+  }
+}

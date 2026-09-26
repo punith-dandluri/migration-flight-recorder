@@ -1,0 +1,58 @@
+{
+  "model": {
+    "name": "ollama-local/qwen3-5-27b-local",
+    "params": {
+      "temperature": 0,
+      "parallel_tool_calls": false,
+      "max_tokens": 4096
+    }
+  },
+  "config": {
+    "iteration_limit": 30,
+    "sandbox": { "enabled": false },
+    "dynamic_sub_agents": { "enabled": false },
+    "ask_user_questions": { "enabled": false },
+    "generative_ui": { "enabled": false },
+    "web_search": { "enabled": false },
+    "context_management": {
+      "compaction": {
+        "enabled": true,
+        "trigger": { "type": "input_tokens", "value": 12000 }
+      },
+      "large_tool_response": { "enabled": false }
+    }
+  },
+  "mcp_servers": [
+    {
+      "name": "postgres-demo-readonly",
+      "enable_tools": [
+        "list_schemas",
+        "list_objects",
+        "get_object_details",
+        "execute_sql"
+      ],
+      "require_approval_for_tools": [],
+      "preload": true
+    },
+    {
+      "name": "local-docker-rehearsal",
+      "enable_tools": ["rehearse_migration", "get_rehearsal_report"],
+      "require_approval_for_tools": ["rehearse_migration", "@destructive"],
+      "preload": true
+    },
+    {
+      "name": "approved-local-target",
+      "enable_tools": [
+        "prepare_target_migration",
+        "apply_target_migration",
+        "get_target_execution"
+      ],
+      "require_approval_for_tools": [
+        "prepare_target_migration",
+        "apply_target_migration",
+        "@destructive"
+      ],
+      "preload": true
+    }
+  ]
+}

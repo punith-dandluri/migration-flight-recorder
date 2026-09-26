@@ -1,0 +1,12 @@
+[
+  {
+    "name": "Nullable project description exists",
+    "sql": "SELECT is_nullable, data_type FROM information_schema.columns WHERE table_schema='app' AND table_name='projects' AND column_name='description'",
+    "expectedRows": [{ "is_nullable": "YES", "data_type": "text" }]
+  },
+  {
+    "name": "Projects preserved",
+    "sql": "SELECT count(*)::int AS rows FROM app.projects",
+    "expectedRows": [{ "rows": 500 }]
+  }
+]
