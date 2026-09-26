@@ -4,6 +4,8 @@ Inspect a proposed PostgreSQL migration, test it on a disposable database copy, 
 
 TrueForge is the chat interface and agent runtime. The model selects read-only inspection queries; deterministic services handle cloning, SQL execution, verification, backups and deployment. There is no separate application UI and no Daytona requirement.
 
+Read the [two-page solution write-up](docs/solution-writeup.pdf) for the problem, architecture, approval boundaries and known limits.
+
 ## What works
 
 - Schema and data inspection through Crystal DBA Postgres MCP with a restricted database account.
