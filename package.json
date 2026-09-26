@@ -1,6 +1,7 @@
 {
   "name": "migration-flight-recorder",
   "version": "0.1.0",
+  "license": "MIT",
   "private": true,
   "description": "Approval-gated PostgreSQL migration inspection, rehearsal and local deployment through TrueForge.",
   "type": "module",

@@ -65,4 +65,4 @@ The earlier prototype, native-sandbox experiments, private reports, credentials 
 - [Troubleshooting and shutdown](docs/troubleshooting.md)
 - [TrueForge](https://github.com/truefoundry/trueforge), [Postgres MCP](https://github.com/crystaldba/postgres-mcp), [Ollama](https://docs.ollama.com/)
 
-No license has been selected for this project's own code yet. Add the intended license before public distribution; dependencies retain their respective licenses.
+Licensed under the [MIT License](LICENSE). Dependencies retain their respective licenses.

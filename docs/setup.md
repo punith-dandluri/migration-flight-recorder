@@ -33,9 +33,11 @@ Required free ports: **54329, 8001, 8002, 3002, 3003, 8790**, plus Ollama's **11
 
 ## 2. Install and initialize
 
-After cloning/downloading this repository:
+Clone the repository, then install and initialize it:
 
 ```sh
+git clone https://github.com/punith-dandluri/migration-flight-recorder.git
+cd migration-flight-recorder
 npm ci
 npm run setup:local
 npm run db:up
